@@ -2,7 +2,7 @@ Simple testing tool for programs interacting via terminal. Runs program,  feeds 
 
 usage: stest test_script.txt [program [arguments]]
 
-test script:
+test script (note **space** between first character and rest of line_:
 ```
 # Any Comment
 # Program to execute - can have parameters
@@ -31,6 +31,21 @@ $ tests/test2.sh
 > Your wish:\\
 < mys
 > mys
+? 0
+---
+```
+
+Also one might need input without EOL.  Or input of  of control characters (Crtl-d, Ctrl-c  ...).  
+There is also shortcut for for closing stdin (aka Ctrl-d) - its line x:
+```
+$ tests/test3.sh
+> Enter empty:\\
+< \\Ctrl-d
+? 0
+---
+$ tests/test3.sh
+> Enter empty:\\
+x
 ? 0
 ---
 ```

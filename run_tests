@@ -2,14 +2,28 @@
 
 function fails {
 if [[ $? == 0 ]]; then
-echo "Should fail" >&2
+echo "!!! Should fail" >&2
+exit 1
+fi
+}
+
+function ok {
+if [[ $? != 0 ]]; then
+echo "!!! Failed" >&2
 exit 1
 fi
 }
 
 ./stest tests/echo.txt
+ok
 ./stest tests/echo-err.txt
 fails
 ./stest tests/test1.txt
+ok
 ./stest tests/test2.txt
+ok
+./stest tests/test2m.txt
+ok
+./stest tests/test3.txt
+ok
 

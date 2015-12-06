@@ -1,0 +1,20 @@
+$ tests/test3.sh
+> Enter empty:\\
+< 
+? 0
+---
+$ tests/test3.sh
+> Enter empty:\\
+< neco
+? 1
+---
+$ tests/test3.sh
+> Enter empty:\\
+< \\Ctrl-d
+? 0
+---
+$ tests/test3.sh
+> Enter empty:\\
+x
+? 0
+---

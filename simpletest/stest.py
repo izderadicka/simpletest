@@ -64,7 +64,9 @@ def run_tests(prog, prog_args, f):
                 p=pexpect.spawn(prog, prog_args, **PEXPECT_KWARGS) 
             continue
         try:
-            c,t=l.split(' ',1)
+            s=l.split(' ',1)
+            c=s[0].strip()
+            t=s[1] if len(s)>1 else ''
         except ValueError:
             raise ScriptError(i,l, 'Invalid line')
         
@@ -90,14 +92,24 @@ def run_tests(prog, prog_args, f):
             except pexpect.EOF:
                 raise ProgramError(i,l,'Program ended before expected output, with this output: %s' % p.before)
             except pexpect.TIMEOUT:
-                raise ProgramError(i,l, 'Program does not provided expected output but provided %s' % p.before)
+                raise ProgramError(i,l, 'Program does not provided expected output but this %s' % p.before)
             if p.before:
                 raise ProgramError(i,l,'Program provided additional output %s' % p.before)
             
         elif c =='<':
             if not p:
                 raise ScriptError(i,l, 'No program defined')
-            p.send(t)
+            if t.endswith('\\\\\n'):
+                t=t[:-3]
+            ctl= re.match(r'\\\\Ctrl-(\w)\n$', t, re.IGNORECASE) 
+            if ctl:
+                p.sendcontrol(ctl.group(1))
+            else:    
+                p.send(t)
+        elif c=='x' or c=='X':
+            if not p:
+                raise ScriptError(i,l, 'No program defined')
+            p.sendcontrol('d')
         elif c=='?':
             try:
                 exp_code=int(t)
@@ -114,7 +126,7 @@ def run_tests(prog, prog_args, f):
                 raise ProgramError(i,l, 'Return code %d is different from expected %d' % (ret, exp_code))
             
         else:
-            raise ScriptError(i,l, 'Invalid line')
+            raise ScriptError(i,l, 'Invalid line, cmd is "%s"'%c)
   
 
 if __name__=='__main__' :
