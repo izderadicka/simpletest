@@ -11,4 +11,5 @@ fi
 ./stest tests/echo-err.txt
 fails
 ./stest tests/test1.txt
+./stest tests/test2.txt
 

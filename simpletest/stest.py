@@ -78,9 +78,13 @@ def run_tests(prog, prog_args, f):
             p =  pexpect.spawn(t, **PEXPECT_KWARGS) 
         
         elif c =='>':
+            
             if not p:
                 raise ScriptError(i,l, 'No program defined')
-            t=re.sub(r'(?<!\r)\n$', '\r\n', t)
+            if t.endswith('\\\\\n'):
+                t=t[:-3]
+            else:
+                t=re.sub(r'(?<!\r)\n$', '\r\n', t)
             try:
                 p.expect_exact(t)
             except pexpect.EOF:

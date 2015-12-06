@@ -1,0 +1,6 @@
+$ tests/test2.sh
+> Your wish:\\
+< mys
+> mys
+? 0
+---

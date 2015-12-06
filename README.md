@@ -25,6 +25,16 @@ $ tests/test1.sh
 ? 1 
 ```
 
+Two \ at the end of output check will match incomplete line:
+```
+$ tests/test2.sh
+> Your wish:\\
+< mys
+> mys
+? 0
+---
+```
+
 Program to test is either in script on $ line or can be passed as parameter to stest.
 
 To install:
