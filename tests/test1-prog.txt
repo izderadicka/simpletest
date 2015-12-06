@@ -1,0 +1,11 @@
+> Hey you
+> What's your name?
+< Ivan
+> Hello Ivan
+? 0
+---
+> Hey you
+> What's your name?
+< Gustav
+> To hell with you
+? 1

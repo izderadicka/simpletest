@@ -1,0 +1,14 @@
+#/bin/bash
+
+function fails {
+if [[ $? == 0 ]]; then
+echo "Should fail" >&2
+exit 1
+fi
+}
+
+./stest tests/echo.txt
+./stest tests/echo-err.txt
+fails
+./stest tests/test1.txt
+
