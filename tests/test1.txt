@@ -1,0 +1,13 @@
+$ tests/test1.sh
+> Hey you
+> What's your name?
+< Ivan
+> Hello Ivan
+? 0
+---
+$ tests/test1.sh
+> Hey you
+> What's your name?
+< Gustav
+> To hell with you
+? 1

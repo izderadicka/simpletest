@@ -1,0 +1,5 @@
+# should fail
+$ echo hi
+> hou
+? 0
+---

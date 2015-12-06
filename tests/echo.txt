@@ -1,0 +1,5 @@
+# very simple test
+$ echo hi
+> hi
+? 0
+---

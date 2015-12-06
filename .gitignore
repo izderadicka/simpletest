@@ -72,3 +72,9 @@ docs/_build/
 # PyBuilder
 target/
 
+bin/
+include/
+local/
+.pydevproject
+pip-selfcheck.json
+.project
