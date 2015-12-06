@@ -30,5 +30,5 @@ Program to test is either in script on $ line or can be passed as parameter to s
 To install:
 
 ```
-pip install https://github.com/izderadicka/simpletest.git#egg=simpletest
+pip install git+https://github.com/izderadicka/simpletest.git#egg=simpletest
 ```
