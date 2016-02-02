@@ -66,7 +66,7 @@ def run_tests(prog, prog_args, f):
         try:
             s=l.split(' ',1)
             c=s[0].strip()
-            t=s[1] if len(s)>1 else ''
+            t=s[1] if len(s)>1 else '\n'
         except ValueError:
             raise ScriptError(i,l, 'Invalid line')
         

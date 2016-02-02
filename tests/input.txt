@@ -1,0 +1,5 @@
+$ python tests/input.py
+< 
+> Empty
+<
+> Empty

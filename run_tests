@@ -26,4 +26,6 @@ ok
 ok
 ./stest tests/test3.txt
 ok
+./stest tests/input.txt
+ok
 
